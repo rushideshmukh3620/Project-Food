@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeatyDelight Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <link rel="icon" type="image/x-icon" href="images/food_14137552.png">
+    <style>
+    *{
+    box-sizing: border-box;
+    font-family: 'Orkney', sans-serif;
+}
+
+body{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('/MeatyDelight/templates/images/juicy-steak-medium-rare-beef-with-spices-grilled-vegetables.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.form{
+    width: 100%;
+    max-width: 500px; /* Ensures the form does not exceed 500px on larger screens */
+    background-color: #ffffff;
+    padding: 20px;
+    display: grid;
+    gap: 5px;
+    padding-bottom: 30px;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+}
+
+.otpverify{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.btn{
+    padding: 10px;
+    background-color: #3c8031;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 100%; /* Make the button full width on smaller screens */
+    color: white;
+}
+
+.otpverify{
+    display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .form {
+        padding: 10px; /* Reduced padding for smaller screens */
+    }
+
+    .btn {
+        width: 100%; /* Ensure the button takes full width on smaller screens */
+    }
+}
+
+    </style>
+</head>
+
+<body class="bg-cover bg-center h-screen flex items-center justify-center">
+    <div class="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg">
+        <h3 class="text-2xl font-bold mb-4">Login</h3>
+        <p class="mb-4">Please enter your email below</p>
+        <input type="email" id="email" placeholder="Email Address" class="w-full p-2 border rounded mb-4">
+        <div class="otpverify" style="display: none;">
+            <input type="text" id="otp_inp" placeholder="Enter the OTP" class="w-full p-2 border rounded mb-4">
+            <button class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline animate-pulse" id="otp-btn">Verify</button>
+        </div>
+        <button class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline animate-pulse" onclick="sendOTP()">Send OTP</button>
+    </div>
+    
+    <script>
+        
+// Define otp_val as a global variable
+let otp_val;
+
+function sendOTP() {
+    const email = document.getElementById('email');
+    const otpverify = document.querySelector('.otpverify');
+
+    // Generate OTP and assign it to the global variable otp_val
+    otp_val = Math.floor(Math.random() * 10000);
+    let emailbody = `${otp_val}<h5>is the OTP to login into your MeatyDelight Platform. Do not share OTP with anyone.</h5>`;
+
+    Email.send({
+        SecureToken: "c725319c-12f4-46a4-98b9-c8b951c8b8e4",
+        To: email.value,
+        From: "meatydelight438@gmail.com",
+        Subject: "Login OTP of MeatyDelight",
+        Body: emailbody,
+    }).then(
+        message => {
+            if (message === "OK") {
+                alert("OTP has been sent to your email " + email.value);
+                otpverify.style.display = "flex";
+            }
+        }
+    );
+}
+
+// Event listener for the OTP verification button
+document.getElementById('otp-btn').addEventListener('click', () => {
+    const otp_inp = document.getElementById('otp_inp');
+    if (otp_inp.value == otp_val) {
+        alert("Email Verified");
+        // Redirect to index.html after successful verification
+        window.location.href = "register.html";
+    } else {
+        alert("Wrong OTP Entered");
+    }
+});
+
+    </script>
+</body>
+</html>

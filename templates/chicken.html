@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken</title>
+    <link rel="icon" type="x-icon" href="/MeatyDelight/templates/images/food_14137552.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Navbar */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 25px;
+    color: #000000;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+
+.navbar-left, .navbar-center, .navbar-right{
+    display: flex;
+    align-items: center;
+}
+
+.logo-brand{
+    height: 70px;
+    margin-left: 380px;
+}
+
+.location, .cart, .profile{
+    color: #000000;
+    text-decoration: none;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+  
+.search-bar{
+    border: black;
+    outline: auto;
+    padding: 5px;
+    margin-right: 5px;
+    flex-grow: 1;
+}
+
+.search-icon{
+    color: #000000;
+}
+
+/* Hover Effect */
+.navbar a:hover, .navbar .location:hover, .navbar .cart:hover, .navbar .profile:hover{
+    color: rgb(255, 153, 0);
+}
+
+#sidebar {
+    position: fixed;
+    right: -350px;
+    top: 100px;
+    width: 350px;
+    height: 100%;
+    background-image: url('images/navimg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: right 0.5s;
+    color: #888888;
+    background-color: rgb(247, 218, 120);
+    font-size: 11px;
+    z-index: 1;
+}
+
+.sidebar-content {
+    padding: 40px;
+    color:white;
+    font-size: 20px;
+}
+
+.product-details {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+.product-info h6 {
+    margin: 0;
+}
+
+.product-info p {
+    margin: 0;
+}
+
+
+#sidebar2 {
+    position: fixed;
+    right: -350px;
+    top: 100px;
+    width: 350px;
+    height: 100%;
+    background-image: url('images/profileimg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: right 0.5s;
+    color: #888888;
+    background-color: rgb(247, 218, 120);
+    font-size: 11px;
+    z-index: 1;
+}
+
+.sidebar2-content {
+    padding: 40px;
+    color:black;
+    font-size: 20px;
+}
+
+.product1-details {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+.product1-info h6 {
+    margin: 0;
+}
+
+.product1-info p {
+    margin: 0;
+}
+
+
+
+  /* Style the sidebar - fixed full height */
+.sidebar3 {
+    height: 100%;
+    width: 130px;
+    position: fixed;
+    z-index: 1100;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    border-right: #000000;
+  }
+  
+  /* Style sidebar links */
+  .sidebar3 a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #000000;
+    display: block;
+  }
+  
+  .sidebar3 a img{
+    height: 50px;
+  }
+  /* Style links on mouse-over */
+  .sidebar3 a:hover {
+    color: rgb(255, 153, 0);
+  }
+  
+ .container {
+    width: 100%; /* Cover half of the webpage */
+    height: 100%; /* Full height of the webpage */
+    background-color: #f0f0f0; /* Example background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .image-container {
+    position: relative;
+    width: 100%; /* Adjust as needed */
+    height: 80%; /* Adjust as needed */
+ }
+
+ .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+ }
+
+ .image-container span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(249, 249, 249);
+    font-size: 80px;
+    text-decoration: bold;
+    font-family:Argent CF;
+ }
+
+ .image-container span:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+   
+ }
+
+ /*cards*/
+
+
+.card-container {
+    margin-left: 130px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+.card {
+    position: relative;
+    width: 350px;
+    height: 450px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.top-text {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    left: 30%; /* Adjust as needed */
+    right: 0; /* Center the text */
+    background-color: rgba(255, 255, 255, 0.5);/* Semi-transparent black background */
+    color: black; /* White text */
+    text-align: center; /* Center the text */
+    padding: 5px; /* Adjust as needed */
+}
+
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.card:hover img {
+    transform: scale(1.05); /* Slightly scale up the image */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Increase the shadow for a depth effect */
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.card-content p {
+    margin: 5px 0;
+    font-size: 17px;
+}
+.card-content button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-image: linear-gradient(to right, #24912bdf 50%, #78f078 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: background-position 0.5s ease-out;
+}
+
+.card-content button:hover {
+    background-position: left bottom;
+}
+/* Responsive styles for smaller screens */
+@media screen and (max-width: 480px) {
+    .container {
+        flex-direction: column; /* Stack elements vertically */
+    }
+
+    .card {
+        width: 100%; /* Make cards full width on smaller screens */
+        margin: 10px 0; /* Adjust margin for better spacing */
+    }
+
+    .card-content {
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    .card-content h2 {
+        font-size: 20px; /* Reduce font size */
+    }
+
+    .card-content p {
+        font-size: 14px; /* Reduce font size */
+    }
+}
+</style>
+
+</head>
+<body>   
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="#" class="location" style="margin-left: 130px;"><i class="fa-solid fa-location-dot"></i>Location</a>
+            <a href="index.html"><img src="images/MeatyDelight.png" alt="Logo Brand" class="logo-brand"></a>
+        </div>
+        <div class="navbar-center">
+            <input type="text" class="search-bar" placeholder="Search..."/>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="navbar-right">
+            <nav>
+            <a href="#" class="cart"><i class="fa-solid fa-cart-shopping"></i>    
+                    <span id="cartBtn">Cart</span>
+                </nav>
+                <div id="sidebar" class="sidebar">
+                    <div class="sidebar-content">
+                        <h2>Your Cart</h2>
+                        <div class="product-details">
+                            <div class="product-info">
+                                <h3>Product Name</h3>
+                                <p>Price: $99.99</p>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <div class="product-info">
+                                <h3>Product Name</h3>
+                                <p>Price: $99.99</p>
+                            </div>
+                        </div>
+                    </div>
+                </div></a>
+                
+                <nav> 
+                <a href="#" class="profile"><i class="fa-regular fa-user"></i>
+                        <span id="cartBtn1">Profile</span>
+                    </nav>
+                    <div id="sidebar2" class="sidebar2">
+                        <div class="sidebar2-content">
+                            <h2>Your Profile</h2>
+                            <div class="product1-details">
+                                <div class="product1-info">
+                                    <h3> Name:</h3>
+                                    <h3>Email: </h3>
+                                    <h3>Phone Number:</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+        </div>
+    </nav>
+      <div class="sidebar3">
+        <a href="chicken.html"> <img src="images/peking-duck_4690109.png"><br><p>Chicken</p></a><hr>
+        <a href="mutton.html"><img src="images/meat_10508122.png"><br><p>Mutton</p></a><hr>
+        <a href="fresh_water_fish.html"><img src="images/taiyaki_6584232.png"> <br><p>Freshwater Fish</p></a><hr>
+        <a href="eggs.html"><img src="images/eggs_3967347.png"><br><p>Eggs</p></a><hr>
+        <a href="ready_to_cook.html"><img src="images/cooking_4814232.png"><br><p>Ready-To-Cook</p></a><hr>
+        <a href="liver&more.html"><img src="images/cirrhosis_12034532.png"><br><p>Liver & More</p></a><hr>
+        <a href="crispy_snacks.html"><img src="images/fried-chicken_5306401.png"><br><p>Crispy Snacks</p></a><hr>
+        <a href="kebab_biryani.html"><img src="images/biryani_4780045.png"><br><p>Kebab & Biryani</p></a><hr>
+        <a href="cold_cuts.html"><img src="images/butcher_1534830.png"><br><p>Cold Cuts</p></a><hr>
+        <a href="sea_water_fish.html"><img src="images/sea_15159521.png"><br><p>Seawater Fish</p></a><hr>
+        <a href="boneless_cuts.html"><img src="images/pork-chop_4802532.png"><br><p>Boneless Cuts</p></a><hr>
+        <a href="crabs_prawns.html"><img src="images/prawns_4381888.png"><br><p>Prawns & Crabs</p></a><hr>
+      </div>
+    
+    <div class="container">
+        <div class="image-container">
+            <img src="images/chicken1.jpg" alt="Image Description">
+            <span>Chicken</span>
+        </div>
+    </div>
+    
+    <div class="card-container">
+        <div class="card">
+            <img src="images/chicken.jpg" alt="Product 1">
+            <div class="top-text">Get it delivered within 120 mins</div>
+            <div class="card-content">
+                <h2>Product 1</h2>
+                <p span="sub">Subheading for Product 1</p>
+                <br>
+                <p><b>Prize: $100</b></p>
+                <p><b>Net Weight: 500g</b></p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/chicken2.jpg" alt="Product 2">
+            <div class="top-text">Get it delivered within 120 mins</div>
+            <div class="card-content">
+                <h2>Product 2</h2>
+                <p>Subheading for Product 2</p>
+                <br>
+                <p><b>Prize: $200</b></p>
+                <p><b>Net Weight: 700g</b></p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/chicken2.jpg" alt="Product 3">
+            <div class="top-text">Get it delivered within 120 mins</div>
+            <div class="card-content">
+                <h2>Product 3</h2>
+                <p>Subheading for Product 3</p>
+                <br>
+                <p><b>Prize: $300</b></p>
+                <p><b>Net Weight: 900g</b></p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/chicken2.jpg" alt="Product 3">
+            <div class="top-text">Get it delivered within 120 mins</div>
+            <div class="card-content">
+                <h2>Product 3</h2>
+                <p>Subheading for Product 3</p> <br>
+                <p><b>Prize: $300</b></p>
+                <p><b>Net Weight: 900g</b></p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/chicken2.jpg" alt="Product 3">
+            <div class="top-text">Get it delivered within 120 mins</div>
+            <div class="card-content">
+                <h2>Product 3</h2>
+                <p>Subheading for Product 3</p> <br>
+                <p><b>Prize: $300</b></p>
+                <p><b>Net Weight: 900g</b></p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="card">
+            <img src="images/chicken2.jpg" alt="Product 3">
+            <div class="top-text">Get it delivered within 120 mins</div>
+            <div class="card-content">
+                <h2>Product 3</h2>
+                <p>Subheading for Product 3</p> <br>
+                <p><b>Prize: $300</b></p>
+                <p><b>Net Weight: 900g</b></p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // script.js
+    document.querySelector('.search-bar').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            // Perform search
+            console.log('Searching...');
+        }
+    });
+    
+    // Add event listeners to the cart and profile links
+    document.querySelector('.cart').addEventListener('click', function() {
+        // Navigate to cart page or perform cart action
+        console.log('Cart clicked');
+    });
+    
+    document.querySelector('.profile').addEventListener('click', function() {
+        // Navigate to profile page or perform profile action
+        console.log('Profile clicked');
+    });
+    
+    
+    
+    // script.js
+    document.getElementById('cartBtn').addEventListener('click', function() {
+        var sidebar = document.getElementById('sidebar');
+        if (sidebar.style.right === '-350px') {
+            sidebar.style.right = '0';
+        } else {
+            sidebar.style.right = '-350px';
+        }
+    });
+    
+    document.getElementById('cartBtn1').addEventListener('click', function() {
+        var sidebar = document.getElementById('sidebar2');
+        if (sidebar.style.right === '-350px') {
+            sidebar.style.right = '0';
+        } else {
+            sidebar.style.right = '-350px';
+        }
+    });
+    </script>
+</body>
+</html>
