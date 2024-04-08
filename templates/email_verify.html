@@ -123,12 +123,13 @@ document.getElementById('otp-btn').addEventListener('click', () => {
     const otp_inp = document.getElementById('otp_inp');
     if (otp_inp.value == otp_val) {
         alert("Email Verified");
-        // Redirect to index.html after successful verification
-        window.location.href = "templates/register.html";
+        // Redirect to register.html after successful verification
+        window.location.href = "/register";
     } else {
         alert("Wrong OTP Entered");
     }
 });
+
 
     </script>
 </body>
