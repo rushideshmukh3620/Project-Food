@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeatyDelight Login</title>
+    <title>Email Verify</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <link rel="icon" type="image/x-icon" href="images/food_14137552.png">
@@ -79,7 +79,7 @@ input{
 
 <body class="bg-cover bg-center h-screen flex items-center justify-center">
     <div class="bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg p-8 rounded-lg shadow-lg">
-        <h3 class="text-2xl font-bold mb-4">Login</h3>
+        <h3 class="text-2xl font-bold mb-4">Email Verify</h3>
         <p class="mb-4">Please enter your email below</p>
         <input type="email" id="email" placeholder="Email Address" class="w-full p-2 border rounded mb-4">
         <div class="otpverify" style="display: none;">
@@ -124,7 +124,7 @@ document.getElementById('otp-btn').addEventListener('click', () => {
     if (otp_inp.value == otp_val) {
         alert("Email Verified");
         // Redirect to index.html after successful verification
-        window.location.href = "register.html";
+        window.location.href = "templates/register.html";
     } else {
         alert("Wrong OTP Entered");
     }

@@ -50,6 +50,10 @@ admin.add_view(ModelView(Product, db.session))
 def index():
     return render_template('email_verify.html')
 
+# @app.route('/register', methods=['GET', 'POST'])
+# def toRegister():
+#
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
